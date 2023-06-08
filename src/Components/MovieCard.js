@@ -4,8 +4,9 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActionArea, CardActions } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 import Rating from "@mui/material/Rating";
+import { Link } from "react-router-dom";
 
 const MovieCard = ({ movieInfo }) => {
   return (
@@ -30,8 +31,8 @@ const MovieCard = ({ movieInfo }) => {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button variant="outlined" startIcon={<DeleteIcon />}>
-          Delete
+        <Button variant="outlined" startIcon={<AddCircleIcon />}>
+          <Link to={`/details/${movieInfo.id}`}>More Details</Link>
         </Button>
       </CardActions>
     </Card>

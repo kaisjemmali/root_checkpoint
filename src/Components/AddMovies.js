@@ -12,6 +12,7 @@ const AddMovies = ({ Add }) => {
     title: "",
     description: "",
     posterURL: "",
+    trailer: "",
     rating: 0,
   });
 
@@ -65,6 +66,15 @@ const AddMovies = ({ Add }) => {
                 type="text"
                 name="posterURL"
                 placeholder="Poster URL"
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Trailer</Form.Label>
+              <Form.Control
+                onChange={handleChange}
+                type="text"
+                name="trailer"
+                placeholder="Trailer"
               />
             </Form.Group>
             <Typography component="legend">Movie Rating</Typography>

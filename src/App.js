@@ -4,6 +4,8 @@ import AddMovies from "./Components/AddMovies";
 import Data from "./Components/Data";
 import MovieList from "./Components/MovieList";
 import Filter from "./Components/Filter";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Details from "./Components/Details";
 
 function App() {
   // Add Movie
@@ -20,20 +22,29 @@ function App() {
 
   return (
     <div className="App">
-      <Filter setsearch={setSearch} setrating={setRating} />
-      <br />
-      <AddMovies Add={Adding} />
-
-      {/* Show movie and filter */}
-
-      <MovieList
-        Data={myMovies.filter((el) => {
-          return (
-            el.title.trim().toLocaleLowerCase().includes(search) &&
-            el.rating >= rating
-          );
-        })}
-      />
+      <BrowserRouter>
+        <Filter setsearch={setSearch} setrating={setRating} />
+        <br />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div>
+                <AddMovies Add={Adding} />
+                <MovieList
+                  Data={myMovies.filter((el) => {
+                    return (
+                      el.title.trim().toLocaleLowerCase().includes(search) &&
+                      el.rating >= rating
+                    );
+                  })}
+                />
+              </div>
+            }
+          />
+          <Route path="/details/:id" element={<Details />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
